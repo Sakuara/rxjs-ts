@@ -1,5 +1,6 @@
 import { fromEvent, interval } from "rxjs";
 import { map, take, tap } from "rxjs/operators";
+import './index.less';
 
 const listEle = document.getElementById('list');
 const listEle$ = fromEvent(listEle, 'click').pipe(map((e: MouseEvent) => ({ clientX: e.clientX })));
