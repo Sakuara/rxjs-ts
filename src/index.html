@@ -24,13 +24,35 @@
             background: lightcoral;
             margin-bottom: 10px;
         }
+
+        @font-face {
+            font-family: 'webfont';
+            font-display: swap;
+            src: url('//at.alicdn.com/t/webfont_newk33jxsr.eot');
+            /* IE9*/
+            src: url('//at.alicdn.com/t/webfont_newk33jxsr.eot?#iefix') format('embedded-opentype'),
+                /* IE6-IE8 */
+                url('//at.alicdn.com/t/webfont_newk33jxsr.woff2') format('woff2'),
+                url('//at.alicdn.com/t/webfont_newk33jxsr.woff') format('woff'),
+                /* chrome、firefox */
+                url('//at.alicdn.com/t/webfont_newk33jxsr.ttf') format('truetype'),
+                /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+                url('//at.alicdn.com/t/webfont_newk33jxsr.svg#杨任东竹石体-Bold') format('svg');
+            /* iOS 4.1- */
+        }
+
+        .webfont {
+            font-family: 'webfont' !important;
+        }
     </style>
 </head>
 
 <body>
     <h1>RxJS Demo</h1>
     <div>
-        <ul id="list"></ul>
+        <ul id="list">
+            <li class="webfont">我的有点是很帅，但我的缺点是帅的不明显。</li>
+        </ul>
     </div>
     <script src="/bundle.js"></script>
 </body>
