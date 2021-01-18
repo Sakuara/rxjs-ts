@@ -1,3 +1,4 @@
+import "./index.less";
 import { fromEvent, interval } from "rxjs";
 import { map, take, tap } from "rxjs/operators";
 
@@ -8,3 +9,4 @@ source$
     .pipe(take(5))
     .subscribe(res => console.log(res));
 listEle$.subscribe(res => console.log(res));
+console.log('hh')
