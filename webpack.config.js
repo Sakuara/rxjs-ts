@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts', // single entry config
+  entry: './src/index.js', // single entry config
   devtool: 'inline-source-map', // 开启sourcemap便于映射到出错代码
   devServer: {
     contentBase: './dist',
@@ -30,12 +30,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          'babel-loader',
-          'ts-loader'
-        ]
+        use: ['babel-loader']
       },
       {
         test: /\.css$/,
