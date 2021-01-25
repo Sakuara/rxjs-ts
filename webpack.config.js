@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 开发模式使用style-loader,HMR功能支持不好
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const VueLoaderPlugin = require('vue-loader/lib/plugin'); // when use vue-loader^15.0.0,add it to plugins
 
 module.exports = {
   mode: 'development',
@@ -30,9 +31,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       },
       {
         test: /\.css$/,
@@ -56,7 +61,13 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      'src': path.resolve(__dirname, '../src'),
+      'assets': path.resolve(__dirname, '../src/assets'),
+      'components': path.resolve(__dirname, '../src/components')
+    }
   },
   output: {
     filename: '[name].bundle.js',

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-
-class A extends Component {
-    render() {
-        return <div>hello world</div>;
+import Vue from 'vue';
+import App from './app.vue';
+new Vue({
+    el: '#app',
+    template: '<App/>',
+    components: {
+        App
     }
-};
-
-ReactDom.render(<App />, document.getElementById('app'));
+});
