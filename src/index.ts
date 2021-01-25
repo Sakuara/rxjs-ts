@@ -4,6 +4,8 @@ import "./index.less";
 import { fromEvent, interval } from "rxjs";
 import { map, take, tap } from "rxjs/operators";
 import axios from 'axios';
+import  _ from 'lodash';
+
 
 const listEle = document.getElementById('list');
 const listEle$ = fromEvent(listEle, 'click').pipe(map((e: MouseEvent) => ({ clientX: e.clientX })));
@@ -27,3 +29,4 @@ class A{
 };
 
 console.log(new A('kaven'));
+_.assign({},{a:1});

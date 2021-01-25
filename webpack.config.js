@@ -31,7 +31,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname,'./src'),
         use: [
           'babel-loader',
           'ts-loader'
@@ -39,10 +39,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        include: path.resolve(__dirname,'./src'),
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       {
         test: /\.less$/i,
+        include: path.resolve(__dirname,'./src'), // 使用include说明loader具体在那个文件夹下执行，优化性能
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader']
       }, {
         test: /\.(png|jpg|gif)$/i,
@@ -54,12 +56,21 @@ module.exports = {
         },],
       }, {
         test: /\.(ttf|woff|eot|svg)$/i, // 引入字体处理
+        include: path.resolve(__dirname,'./src'), //在次目录下使用
         use: ['file-loader'],
       }
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'], // 支持的后缀列表，引入时不用加后缀
+    modules: [path.resolve(__dirname,'./node_modules')], // 查找第三方模块
+    alias: { // 别名 使用别名减少查找过程，节省时间
+      // react: "./node_modules/react/umd/react.production.js" // eg.
+      "@": path.resolve(__dirname,'./src/styles'), // 使用绝对路径减少相对路径 转换成绝对路径时间
+    }
+  },
+  externals: { // 优化静态资源cdn，__防止__将某些 import 的包(package)__打包__到 bundle 中，而是在运行时(runtime)再去从外部获取这些_扩展依赖(external dependencies)_
+    
   },
   output: {
     filename: '[name].bundle.js',
