@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "webpack:dev": "webpack --config webpack.config.js",
-    "dev": "webpack serve --mode development --env development"
+    "dev": "webpack serve --mode development --env development",
+    "webpack:prod": "webpack --config webpack.prod.config.js"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +21,12 @@
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
     "core-js": "^3.8.3",
     "css-loader": "^5.0.1",
+    "css-minimizer-webpack-plugin": "^1.2.0",
     "file-loader": "^6.2.0",
+    "html-minimizer-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^4.5.1",
     "less": "^4.1.0",
     "less-loader": "^7.2.1",
@@ -37,10 +41,12 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.15.0",
     "webpack-cli": "^4.3.1",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "@types/lodash": "^4.14.168",
+    "axios": "^0.21.1",
     "lodash": "^4.17.20",
     "rxjs": "^6.6.3"
   }
