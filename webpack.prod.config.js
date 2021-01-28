@@ -50,6 +50,20 @@ const prodConfig = {
             // `...`,
             new CssMinimizerPlugin(),//压缩css
         ],
+        usedExports: 'global', // js tree shaking
+        splitChunks: {
+            chunks: 'all', // code spliting,eg. in main.bundle.js,split it with lodash.js ,main.js
+            cacheGroups: {
+                'lodash': { // 精确匹配到某个引用然后分割出去
+                    test: /lodash/,
+                    name: 'lodash'
+                },
+                'axios': {
+                    test: /axios/,
+                    name: 'axios'
+                }
+            }
+        }
     },
     output: {
         filename: '[name].bundle.js',
